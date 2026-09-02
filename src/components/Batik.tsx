@@ -1,52 +1,60 @@
-// Batik-inspired motifs: kawung (interlocking circles) + truntum (four-point stars)
-// and isen dots — an authentic Central-Java lattice used as brand ornament.
+// Filled kawung (four-petal flowers) + truntum (four-point stars) batik lattice.
+// Bold, ref-matched Central-Java motif used as brand ornament in decorative zones.
 
 type BatikProps = {
   id: string
   className?: string
-  color?: string
-  opacity?: number
-  scale?: number // px size of one repeat tile
-  strokeWidth?: number
+  color?: string // petals
+  accent?: string // stars + dots
+  opacity?: number // petal opacity
+  accentOpacity?: number // star opacity
+  scale?: number
 }
 
-/** Four-point "truntum" star. */
-function starPath(cx: number, cy: number, outer: number, inner: number) {
-  const p = (a: number, r: number) => `${cx + r * Math.cos(a)} ${cy + r * Math.sin(a)}`
+function petal(cx: number, cy: number, deg: number, P: number, W: number) {
+  const t = (deg * Math.PI) / 180
+  const cos = Math.cos(t)
+  const sin = Math.sin(t)
+  const tx = cx + P * cos
+  const ty = cy + P * sin
+  const mx = cx + P * 0.5 * cos
+  const my = cy + P * 0.5 * sin
+  const px = -sin
+  const py = cos
+  return `M${cx} ${cy} Q${mx + (W / 2) * px} ${my + (W / 2) * py} ${tx} ${ty} Q${mx - (W / 2) * px} ${my - (W / 2) * py} ${cx} ${cy} Z`
+}
+
+function star(cx: number, cy: number, outer: number, inner: number) {
   const pts: string[] = []
   for (let i = 0; i < 8; i++) {
     const a = (Math.PI / 4) * i - Math.PI / 2
-    pts.push(p(a, i % 2 === 0 ? outer : inner))
+    const r = i % 2 === 0 ? outer : inner
+    pts.push(`${cx + r * Math.cos(a)} ${cy + r * Math.sin(a)}`)
   }
   return `M${pts[0]} L${pts.slice(1).join(' L')} Z`
 }
 
-/** One seamless kawung + truntum tile (as pattern children). */
-function KawungTile(S: number, sw: number) {
-  const R = S * 0.5 // circle radius; centres on a grid of spacing S → interlocking rings
-  const c = (cx: number, cy: number) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={R} />
+/** Children of one seamless filled-kawung pattern tile. */
+function Tile(S: number, color: string, accent: string, op: number, aop: number) {
+  const P = S * 0.5
+  const W = S * 0.3
+  const flower = (cx: number, cy: number, dirs: number[]) =>
+    dirs.map((d) => <path key={`${cx}-${cy}-${d}`} d={petal(cx, cy, d, P, W)} />)
   return (
     <>
-      {/* interlocking rings (kawung) — corners + centre tile seamlessly */}
-      <g fill="none" stroke="currentColor" strokeWidth={sw}>
-        {c(0, 0)}
-        {c(S, 0)}
-        {c(0, S)}
-        {c(S, S)}
-        {c(S / 2, S / 2)}
+      <g fill={color} fillOpacity={op}>
+        {flower(S / 2, S / 2, [0, 90, 180, 270])}
+        {flower(0, 0, [0, 90])}
+        {flower(S, 0, [90, 180])}
+        {flower(0, S, [0, 270])}
+        {flower(S, S, [180, 270])}
       </g>
-      {/* truntum stars where four petals meet */}
-      <g fill="currentColor" stroke="none">
-        <path d={starPath(S / 2, S / 2, S * 0.12, S * 0.05)} />
-        <path d={starPath(0, 0, S * 0.12, S * 0.05)} />
-        <path d={starPath(S, 0, S * 0.12, S * 0.05)} />
-        <path d={starPath(0, S, S * 0.12, S * 0.05)} />
-        <path d={starPath(S, S, S * 0.12, S * 0.05)} />
-        {/* isen dots at edge midpoints */}
-        <circle cx={S / 2} cy={0} r={S * 0.03} />
-        <circle cx={0} cy={S / 2} r={S * 0.03} />
-        <circle cx={S} cy={S / 2} r={S * 0.03} />
-        <circle cx={S / 2} cy={S} r={S * 0.03} />
+      <g fill={accent} fillOpacity={aop}>
+        <path d={star(S / 2, 0, S * 0.11, S * 0.045)} />
+        <path d={star(0, S / 2, S * 0.11, S * 0.045)} />
+        <path d={star(S, S / 2, S * 0.11, S * 0.045)} />
+        <path d={star(S / 2, S, S * 0.11, S * 0.045)} />
+        <circle cx={S / 2} cy={S / 2} r={S * 0.05} />
       </g>
     </>
   )
@@ -56,20 +64,17 @@ function KawungTile(S: number, sw: number) {
 export function Batik({
   id,
   className = '',
-  color = 'currentColor',
-  opacity = 0.08,
-  scale = 56,
-  strokeWidth = 1.1,
+  color = '#c8322c',
+  accent,
+  opacity = 0.2,
+  accentOpacity = 0.5,
+  scale = 60,
 }: BatikProps) {
   return (
-    <svg
-      aria-hidden
-      className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
-      style={{ color, opacity }}
-    >
+    <svg aria-hidden className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}>
       <defs>
         <pattern id={id} width={scale} height={scale} patternUnits="userSpaceOnUse">
-          {KawungTile(scale, strokeWidth)}
+          {Tile(scale, color, accent ?? color, opacity, accentOpacity)}
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
@@ -78,13 +83,25 @@ export function Batik({
 }
 
 /** Slim horizontal batik band — footer tops, dividers. */
-export function BatikStrip({ className = '', color = 'currentColor' }: { className?: string; color?: string }) {
+export function BatikStrip({
+  color = '#ffffff',
+  accent = '#ffffff',
+  opacity = 0.9,
+  accentOpacity = 1,
+  className = '',
+}: {
+  color?: string
+  accent?: string
+  opacity?: number
+  accentOpacity?: number
+  className?: string
+}) {
   return (
-    <div className={`h-7 w-full overflow-hidden ${className}`} style={{ color }} aria-hidden>
+    <div className={`h-9 w-full overflow-hidden ${className}`} aria-hidden>
       <svg className="h-full w-full" preserveAspectRatio="xMidYMid slice">
         <defs>
-          <pattern id="batik-strip" width="28" height="28" patternUnits="userSpaceOnUse">
-            {KawungTile(28, 1)}
+          <pattern id="batik-strip" width="36" height="36" patternUnits="userSpaceOnUse">
+            {Tile(36, color, accent, opacity, accentOpacity)}
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#batik-strip)" />
@@ -93,14 +110,21 @@ export function BatikStrip({ className = '', color = 'currentColor' }: { classNa
   )
 }
 
-/** A bold vertical batik column — for decorative side panels. */
-export function BatikPanel({ id, className = '', color = 'currentColor', opacity = 0.16 }: BatikProps) {
+/** Bold vertical batik column — decorative side panels. */
+export function BatikPanel({
+  id,
+  className = '',
+  color = '#c8322c',
+  accent = '#ffffff',
+  opacity = 0.9,
+  accentOpacity = 0.9,
+}: BatikProps) {
   return (
-    <div className={`pointer-events-none absolute inset-y-0 ${className}`} style={{ color, opacity }} aria-hidden>
+    <div className={`pointer-events-none absolute inset-y-0 overflow-hidden ${className}`} aria-hidden>
       <svg className="h-full w-full" preserveAspectRatio="xMidYMid slice">
         <defs>
-          <pattern id={id} width="44" height="44" patternUnits="userSpaceOnUse">
-            {KawungTile(44, 1.4)}
+          <pattern id={id} width="52" height="52" patternUnits="userSpaceOnUse">
+            {Tile(52, color, accent, opacity, accentOpacity)}
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill={`url(#${id})`} />
