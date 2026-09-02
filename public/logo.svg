@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" width="600" height="144">
+  <rect x="4" y="8" width="56" height="56" rx="14" fill="#C8322C"/>
+  <path d="M20 46 L32 20 L44 46" fill="none" stroke="#ffffff" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,0)"/>
+  <path d="M25 36 H39" fill="none" stroke="#ffffff" stroke-width="4.8" stroke-linecap="round"/>
+  <path d="M16 51 Q32 57 48 51" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" opacity="0.6"/>
+  <text x="78" y="45" font-family="Poppins, 'Segoe UI', sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5" fill="#22262d">Aneka <tspan fill="#C8322C">Karya</tspan></text>
+  <text x="79" y="60" font-family="Inter, sans-serif" font-size="10" letter-spacing="3" fill="#6b7280">BOYOLALI · EXPORT PLATFORM</text>
+</svg>
