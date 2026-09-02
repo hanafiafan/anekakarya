@@ -1,4 +1,5 @@
 import { Img, Reveal, SectionHead } from '../components/ui'
+import { Icon } from '../components/icons'
 import { stats } from '../data'
 import { useI18n } from '../i18n'
 
@@ -25,12 +26,12 @@ export default function About() {
       <section className="container-x py-20">
         <div className="grid gap-8 md:grid-cols-2">
           <Reveal className="rounded-3xl bg-white p-8 ring-1 ring-black/5">
-            <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-leaf/12 text-xl">🎯</div>
+            <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-forest/10 text-forest"><Icon name="target" className="h-6 w-6" /></div>
             <h2 className="font-display text-2xl text-ink">{t('about.mission.t')}</h2>
             <p className="mt-3 text-muted">{t('about.mission.d')}</p>
           </Reveal>
           <Reveal delay={100} className="rounded-3xl bg-white p-8 ring-1 ring-black/5">
-            <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-ocean/12 text-xl">🌏</div>
+            <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-ocean/12 text-ocean"><Icon name="globe" className="h-6 w-6" /></div>
             <h2 className="font-display text-2xl text-ink">{t('about.vision.t')}</h2>
             <p className="mt-3 text-muted">{t('about.vision.d')}</p>
           </Reveal>

@@ -15,8 +15,8 @@ function Logo({ light = false }: { light?: boolean }) {
         <path d="M24.5 35.5 H39.5" fill="none" stroke={mark} strokeWidth="5.4" strokeLinecap="round" />
         <path d="M15 51 Q32 58 49 51" fill="none" stroke={mark} strokeWidth="3" strokeLinecap="round" opacity="0.6" />
       </svg>
-      <span className={`font-display text-xl font-bold tracking-tight ${light ? 'text-white' : 'text-ink'}`}>
-        Aneka <span className={light ? 'text-white/85' : 'text-forest'}>Karya</span>
+      <span className={`font-sans text-lg font-bold tracking-tight ${light ? 'text-white' : 'text-ink'}`}>
+        Aneka&nbsp;<span className={light ? 'text-white/85' : 'text-forest'}>Karya</span>
       </span>
     </Link>
   )

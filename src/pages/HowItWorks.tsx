@@ -1,4 +1,5 @@
 import { Reveal, SectionHead } from '../components/ui'
+import { Icon } from '../components/icons'
 import { useRfq } from '../components/rfq'
 import { useI18n } from '../i18n'
 
@@ -6,7 +7,7 @@ export default function HowItWorks() {
   const { t } = useI18n()
   const { open } = useRfq()
   const steps = [1, 2, 3, 4]
-  const icons = ['🔎', '📦', '🏭', '🚢']
+  const icons = ['search', 'box', 'factory', 'ship']
 
   return (
     <div className="pt-28">
@@ -33,8 +34,8 @@ export default function HowItWorks() {
                     <p className="mt-2 text-sm text-muted">{t(`how.${n}.d`)}</p>
                   </div>
                 </div>
-                <div className="absolute left-0 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-forest text-2xl text-white shadow-lg sm:left-1/2 sm:-translate-x-1/2">
-                  {icons[i]}
+                <div className="absolute left-0 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-forest text-white shadow-lg sm:left-1/2 sm:-translate-x-1/2">
+                  <Icon name={icons[i]} className="h-6 w-6" />
                 </div>
                 <div className="hidden flex-1 sm:block" />
               </Reveal>

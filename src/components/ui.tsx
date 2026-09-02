@@ -127,10 +127,15 @@ export function SectionHead({
   return (
     <div className={`max-w-2xl ${center ? 'mx-auto text-center' : ''}`}>
       {kicker && (
-        <div className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-leaf">{kicker}</div>
+        <div className={`mb-4 flex items-center gap-2.5 ${center ? 'justify-center' : ''}`}>
+          <span className="h-px w-7 bg-forest/60" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-forest">
+            {kicker}
+          </span>
+        </div>
       )}
-      <h2 className="font-display text-3xl leading-tight text-ink sm:text-4xl">{title}</h2>
-      {sub && <p className="mt-3 text-muted">{sub}</p>}
+      <h2 className="font-display text-[2rem] leading-[1.06] text-ink sm:text-[2.75rem]">{title}</h2>
+      {sub && <p className="mt-4 text-lg leading-relaxed text-muted">{sub}</p>}
     </div>
   )
 }

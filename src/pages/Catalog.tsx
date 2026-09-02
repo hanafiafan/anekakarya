@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { ProductCard, UmkmCard } from '../components/cards'
+import { Icon } from '../components/icons'
 import { SectionHead } from '../components/ui'
 import { categories, certifications, products, umkmBySlug, umkms } from '../data'
 import { useI18n } from '../i18n'
@@ -63,7 +64,7 @@ export default function Catalog() {
         {/* search + sort */}
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="relative flex-1">
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">⌕</span>
+            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted"><Icon name="search" className="h-4 w-4" /></span>
             <input
               value={q}
               onChange={(e) => set('q', e.target.value)}
@@ -112,7 +113,7 @@ export default function Catalog() {
 
         {total === 0 ? (
           <div className="py-24 text-center">
-            <div className="text-4xl">🔍</div>
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-black/5 text-muted"><Icon name="search" className="h-7 w-7" /></div>
             <h3 className="mt-4 font-display text-2xl text-ink">{t('cat.none.t')}</h3>
             <p className="mt-2 text-muted">{t('cat.none.d')}</p>
           </div>

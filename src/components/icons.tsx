@@ -31,6 +31,36 @@ export function Icon({ name, className = 'h-6 w-6' }: { name: string; className?
       </>
     ),
     arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
+    search: (
+      <>
+        <circle cx="11" cy="11" r="7" />
+        <path d="M20 20l-3.5-3.5" />
+      </>
+    ),
+    box: (
+      <>
+        <path d="M3.5 7.5l8.5-4 8.5 4v9l-8.5 4-8.5-4z" />
+        <path d="M3.5 7.5l8.5 4 8.5-4M12 11.5V20.5" />
+      </>
+    ),
+    factory: (
+      <>
+        <path d="M3 20V10l6 4V10l6 4V6l3-2v16z" />
+        <path d="M3 20h18" />
+      </>
+    ),
+    target: (
+      <>
+        <circle cx="12" cy="12" r="8" />
+        <circle cx="12" cy="12" r="3.5" />
+      </>
+    ),
+    compass: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M15.5 8.5l-2 5-5 2 2-5z" />
+      </>
+    ),
   }
   return (
     <svg
