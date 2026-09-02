@@ -28,7 +28,7 @@ export default function Home() {
 
       {/* stats bar */}
       <section className="relative overflow-hidden bg-ink text-white">
-        <Batik id="batik-stats" color="#ffffff" opacity={0.06} scale={44} />
+        <Batik id="batik-stats" color="#ffffff" opacity={0.1} scale={54} />
         <div
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full"
           style={{ background: 'radial-gradient(circle, rgba(200,50,44,0.55), transparent 70%)' }}
@@ -118,7 +118,7 @@ export default function Home() {
               'radial-gradient(120% 120% at 15% 0%, #d94339 0%, #c8322c 35%, #9e211c 70%, #7a1a16 100%)',
           }}
         >
-          <Batik id="batik-cta" color="#ffffff" opacity={0.09} scale={40} />
+          <Batik id="batik-cta" color="#ffffff" opacity={0.15} scale={50} />
           <div
             className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full"
             style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%)' }}
