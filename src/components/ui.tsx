@@ -62,6 +62,18 @@ export function Reveal({
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    // Reveal immediately if already in view on mount (above-the-fold content,
+    // or environments where IntersectionObserver doesn't fire). Prevents
+    // content from ever getting stuck invisible.
+    const vh = window.innerHeight || document.documentElement.clientHeight || 800
+    if (el.getBoundingClientRect().top < vh * 0.92) {
+      setShown(true)
+      return
+    }
+    if (typeof IntersectionObserver === 'undefined') {
+      setShown(true)
+      return
+    }
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {

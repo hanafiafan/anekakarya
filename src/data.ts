@@ -401,6 +401,54 @@ export const articles: Article[] = [
     tag: { en: 'Craft', id: 'Kriya' },
     photo: '/photos/copper-hands.jpg',
   },
+  {
+    slug: 'halal-certification-for-export',
+    title: { en: 'HALAL certification: what it means for your imports', id: 'Sertifikasi HALAL: artinya bagi impor Anda' },
+    excerpt: {
+      en: 'Why HALAL matters beyond Muslim-majority markets, and how our producers get certified.',
+      id: 'Mengapa HALAL penting melampaui pasar mayoritas Muslim, dan bagaimana produsen kami tersertifikasi.',
+    },
+    body: {
+      en: 'HALAL certification signals that a product meets strict sourcing, hygiene and traceability standards — increasingly valued even outside Muslim-majority markets as a mark of quality assurance. In Indonesia, HALAL is issued by BPJPH with audits by accredited bodies (LPH). Every food producer on Aneka Karya either holds active HALAL certification or is guided through it before listing, so your shipments arrive with documentation buyers and customs expect.',
+      id: 'Sertifikasi HALAL menandakan produk memenuhi standar sumber bahan, higienitas, dan ketertelusuran yang ketat — makin dihargai bahkan di luar pasar mayoritas Muslim sebagai tanda jaminan mutu. Di Indonesia, HALAL diterbitkan BPJPH dengan audit oleh lembaga terakreditasi (LPH). Setiap produsen makanan di Aneka Karya memegang sertifikat HALAL aktif atau kami dampingi sampai memilikinya sebelum tampil, agar kiriman Anda datang dengan dokumen yang diharapkan pembeli dan bea cukai.',
+    },
+    date: '2026-08-20',
+    readMins: 5,
+    tag: { en: 'Compliance', id: 'Kepatuhan' },
+    photo: '/photos/food.jpg',
+  },
+  {
+    slug: 'moq-sampling-first-orders',
+    title: { en: 'MOQ, samples and your first order: how it works', id: 'MOQ, sampel, dan pesanan pertama: cara kerjanya' },
+    excerpt: {
+      en: 'A practical walkthrough from first inquiry to a confirmed, sampled, quality-checked shipment.',
+      id: 'Panduan praktis dari pertanyaan awal hingga kiriman yang dikonfirmasi, disampel, dan dicek mutu.',
+    },
+    body: {
+      en: 'Minimum order quantities (MOQ) exist so small producers can run efficient batches — but we can consolidate across producers to reach them. A typical first order runs: RFQ → quotation with Incoterms → paid or free samples couriered to you → PO and deposit → production → independent pre-shipment inspection → export documents and shipping. Most buyers reach a confirmed order within two to three weeks of the first inquiry.',
+      id: 'Minimum order (MOQ) ada agar produsen kecil bisa menjalankan batch yang efisien — tapi kami bisa mengonsolidasi lintas produsen untuk memenuhinya. Alur pesanan pertama biasanya: RFQ → penawaran dengan Incoterms → sampel berbayar/gratis dikirim ke Anda → PO dan deposit → produksi → inspeksi pra-kirim independen → dokumen ekspor dan pengiriman. Kebanyakan pembeli mencapai pesanan terkonfirmasi dalam dua sampai tiga minggu sejak pertanyaan pertama.',
+    },
+    date: '2026-08-02',
+    readMins: 6,
+    tag: { en: 'Sourcing', id: 'Sourcing' },
+    photo: '/photos/warehouse.jpg',
+  },
+  {
+    slug: 'export-packaging-labeling',
+    title: { en: 'Packaging & labeling that clears customs', id: 'Kemasan & label yang lolos bea cukai' },
+    excerpt: {
+      en: 'Export-grade packaging protects your goods and satisfies destination-country labeling rules.',
+      id: 'Kemasan kelas ekspor melindungi barang dan memenuhi aturan pelabelan negara tujuan.',
+    },
+    body: {
+      en: 'Getting to port is only half the job — goods must survive weeks in a container and satisfy the destination market’s labeling rules. That means moisture-resistant, stackable packaging, correct net-weight and country-of-origin marks, ingredient and allergen declarations where required, and multilingual labels. Aneka Karya reviews packaging and artwork against your market’s requirements before production, avoiding costly rejections at the border.',
+      id: 'Sampai ke pelabuhan baru separuh pekerjaan — barang harus bertahan berminggu-minggu dalam kontainer dan memenuhi aturan pelabelan pasar tujuan. Artinya kemasan tahan lembap dan bisa ditumpuk, tanda berat bersih dan negara asal yang benar, deklarasi bahan dan alergen bila diperlukan, serta label multibahasa. Aneka Karya meninjau kemasan dan desain terhadap persyaratan pasar Anda sebelum produksi, menghindari penolakan mahal di perbatasan.',
+    },
+    date: '2026-07-18',
+    readMins: 5,
+    tag: { en: 'Quality', id: 'Mutu' },
+    photo: '/photos/textiles.jpg',
+  },
 ]
 
 export const articleBySlug = (slug: string) => articles.find((a) => a.slug === slug)
