@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useI18n, type Lang } from '../i18n'
 import { useRfq } from './rfq'
+import { BatikStrip } from './Batik'
 import { useInquiry } from './inquiry'
 
 function Logo({ light = false }: { light?: boolean }) {
@@ -157,6 +158,9 @@ function Footer() {
   const { t } = useI18n()
   return (
     <footer className="mt-24 bg-ink text-white/80">
+      <div className="bg-forest text-white/90">
+        <BatikStrip />
+      </div>
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <Logo light />
