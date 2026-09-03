@@ -3,7 +3,7 @@ import { certifications, guarantees, markets, testimonials } from '../data'
 import { useI18n } from '../i18n'
 import { Img, Reveal, SectionHead } from './ui'
 import { Icon } from './icons'
-import { Batik } from './Batik'
+import { Kawung } from './Batik'
 
 /** Editorial split — real imagery + origin story. */
 export function OriginStory() {
@@ -59,7 +59,7 @@ export function PhotoMosaic() {
   ] as const
   return (
     <section className="relative overflow-hidden bg-ink py-20">
-      <Batik id="batik-mosaic" color="#ffffff" accent="#ffffff" opacity={0.05} accentOpacity={0.13} scale={52} />
+      <Kawung id="batik-mosaic" color="#ffffff" accent="#ffffff" opacity={0.045} accentOpacity={0.1} scale={54} />
       <div className="container-x relative">
         <Reveal>
           <div className="mb-10 text-center">
@@ -98,7 +98,7 @@ export function Certifications() {
   const { t, tl } = useI18n()
   return (
     <section className="relative overflow-hidden py-16">
-      <Batik id="batik-certs" color="#c8322c" accent="#c8322c" opacity={0.05} accentOpacity={0.1} scale={64} className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_72%)]" />
+      <Kawung id="batik-certs" color="#c8322c" accent="#c8322c" opacity={0.045} accentOpacity={0.09} scale={64} className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_72%)]" />
       <div className="container-x relative">
         <Reveal>
           <SectionHead title={t('trust.title')} sub={t('trust.sub')} center />

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import CinematicStory from '../components/CinematicStory'
 import { CategoryCard, UmkmCard } from '../components/cards'
-import { Batik } from '../components/Batik'
+import { Kawung, BatikPanel } from '../components/Batik'
 import { Reveal, SectionHead } from '../components/ui'
 import {
   Certifications,
@@ -28,7 +28,7 @@ export default function Home() {
 
       {/* stats bar */}
       <section className="relative overflow-hidden bg-ink text-white">
-        <Batik id="batik-stats" color="#ffffff" accent="#ffffff" opacity={0.07} accentOpacity={0.16} scale={58} />
+        <Kawung id="batik-stats" color="#ffffff" accent="#ffffff" opacity={0.05} accentOpacity={0.13} scale={58} />
         <div
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full"
           style={{ background: 'radial-gradient(circle, rgba(200,50,44,0.55), transparent 70%)' }}
@@ -118,10 +118,22 @@ export default function Home() {
               'radial-gradient(120% 120% at 15% 0%, #d94339 0%, #c8322c 35%, #9e211c 70%, #7a1a16 100%)',
           }}
         >
-          <Batik id="batik-cta" color="#ffffff" accent="#ffd7d3" opacity={0.14} accentOpacity={0.36} scale={54} />
-          <div
-            className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full"
-            style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%)' }}
+          <Kawung id="batik-cta" color="#ffffff" accent="#ffd7d3" opacity={0.12} accentOpacity={0.3} scale={56} />
+          <BatikPanel
+            id="parang-cta-r"
+            className="right-0 w-36 [mask-image:linear-gradient(to_left,black,transparent)]"
+            color="#ffffff"
+            accent="#ffe1dd"
+            opacity={0.16}
+            accentOpacity={0.28}
+          />
+          <BatikPanel
+            id="parang-cta-l"
+            className="left-0 w-36 [mask-image:linear-gradient(to_right,black,transparent)]"
+            color="#ffffff"
+            accent="#ffe1dd"
+            opacity={0.16}
+            accentOpacity={0.28}
           />
           <div className="relative">
             <h2 className="mx-auto max-w-2xl font-display text-3xl leading-tight sm:text-[2.6rem]">
