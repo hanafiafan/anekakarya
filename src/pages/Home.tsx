@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import CinematicStory from '../components/CinematicStory'
 import { CategoryCard, UmkmCard } from '../components/cards'
-import { Kawung, BatikPanel } from '../components/Batik'
 import { Reveal, SectionHead } from '../components/ui'
 import {
   Certifications,
@@ -27,16 +26,11 @@ export default function Home() {
       <TrustBar />
 
       {/* stats bar */}
-      <section className="relative overflow-hidden bg-ink text-white">
-        <Kawung id="batik-stats" color="#ffffff" accent="#ffffff" opacity={0.05} accentOpacity={0.13} scale={58} />
-        <div
-          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(200,50,44,0.55), transparent 70%)' }}
-        />
-        <div className="container-x relative grid grid-cols-2 gap-6 py-12 sm:grid-cols-4">
+      <section className="bg-ink text-white">
+        <div className="container-x grid grid-cols-2 gap-6 py-12 sm:grid-cols-4">
           {stats.map((s) => (
             <div key={s.value} className="text-center">
-              <div className="font-display text-4xl sm:text-5xl">{s.value}</div>
+              <div className="font-display text-3xl sm:text-4xl">{s.value}</div>
               <div className="mt-1 text-xs text-white/70 sm:text-sm">{tl(s.label)}</div>
             </div>
           ))}
@@ -111,42 +105,15 @@ export default function Home() {
 
       {/* CTA */}
       <section className="container-x pt-16">
-        <div
-          className="relative overflow-hidden rounded-[2rem] px-8 py-16 text-center text-white sm:px-16"
-          style={{
-            background:
-              'radial-gradient(120% 120% at 15% 0%, #d94339 0%, #c8322c 35%, #9e211c 70%, #7a1a16 100%)',
-          }}
-        >
-          <Kawung id="batik-cta" color="#ffffff" accent="#ffd7d3" opacity={0.12} accentOpacity={0.3} scale={56} />
-          <BatikPanel
-            id="parang-cta-r"
-            className="right-0 w-36 [mask-image:linear-gradient(to_left,black,transparent)]"
-            color="#ffffff"
-            accent="#ffe1dd"
-            opacity={0.16}
-            accentOpacity={0.28}
-          />
-          <BatikPanel
-            id="parang-cta-l"
-            className="left-0 w-36 [mask-image:linear-gradient(to_right,black,transparent)]"
-            color="#ffffff"
-            accent="#ffe1dd"
-            opacity={0.16}
-            accentOpacity={0.28}
-          />
-          <div className="relative">
-            <h2 className="mx-auto max-w-2xl font-display text-3xl leading-tight sm:text-[2.6rem]">
-              {t('cta.title')}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-white/90">{t('cta.sub')}</p>
-            <button
-              onClick={() => open()}
-              className="mt-8 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-forest shadow-xl transition hover:bg-cream"
-            >
-              {t('nav.inquiry')}
-            </button>
-          </div>
+        <div className="overflow-hidden rounded-[2rem] bg-gradient-to-br from-forest to-ocean px-8 py-14 text-center text-white sm:px-16">
+          <h2 className="mx-auto max-w-2xl font-display text-3xl sm:text-4xl">{t('cta.title')}</h2>
+          <p className="mx-auto mt-3 max-w-xl text-white/85">{t('cta.sub')}</p>
+          <button
+            onClick={() => open()}
+            className="mt-7 rounded-full bg-white px-7 py-3 text-sm font-semibold text-forest shadow-lg transition hover:bg-cream"
+          >
+            {t('nav.inquiry')}
+          </button>
         </div>
       </section>
 
