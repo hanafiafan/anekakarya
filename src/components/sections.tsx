@@ -135,8 +135,8 @@ export function Guarantees() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {guarantees.map((g, i) => (
             <Reveal key={i} delay={i * 80}>
-              <div className="h-full rounded-3xl border border-black/5 bg-white p-6 transition hover:-translate-y-1 hover:shadow-lg">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-leaf/10 text-forest">
+              <div className="h-full rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_3px_rgba(31,42,36,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_46px_-22px_rgba(31,42,36,0.26)]">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-leaf/10 text-forest ring-1 ring-leaf/15">
                   <Icon name={g.icon} className="h-6 w-6" />
                 </div>
                 <h3 className="font-display text-lg text-ink">{tl(g.title)}</h3>
@@ -162,7 +162,7 @@ export function Testimonials() {
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {testimonials.map((tm, i) => (
             <Reveal key={i} delay={i * 80}>
-              <figure className="flex h-full flex-col rounded-3xl border border-black/5 bg-white p-7">
+              <figure className="flex h-full flex-col rounded-2xl border border-black/[0.06] bg-white p-7 shadow-[0_1px_3px_rgba(31,42,36,0.05)]">
                 <Icon name="quote" className="h-8 w-8 text-leaf/40" />
                 <blockquote className="mt-4 flex-1 text-ink/85">{tl(tm.quote)}</blockquote>
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-black/5 pt-5">

@@ -31,6 +31,17 @@ html {
   scroll-behavior: smooth;
 }
 
+::selection {
+  background: rgba(200, 50, 44, 0.16);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 body {
   margin: 0;
   background: var(--color-cream);

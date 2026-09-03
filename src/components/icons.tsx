@@ -61,6 +61,12 @@ export function Icon({ name, className = 'h-6 w-6' }: { name: string; className?
         <path d="M15.5 8.5l-2 5-5 2 2-5z" />
       </>
     ),
+    pin: (
+      <>
+        <path d="M12 21c4-5 7-8 7-11a7 7 0 10-14 0c0 3 3 6 7 11z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </>
+    ),
   }
   return (
     <svg
