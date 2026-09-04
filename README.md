@@ -8,8 +8,20 @@ Model: **inquiry / RFQ** (no checkout/payment). Built with **Vite + React + TS +
 ```bash
 npm install
 npm run dev      # http://localhost:5173
-npm run build    # production build -> dist/
+npm run build    # production build -> dist/ (also regenerates public/sitemap.xml)
 ```
+
+## Production activation (env vars)
+
+Set these in Coolify → the app → Environment, then redeploy. Both are optional —
+without them the site still works (forms accept + log in demo mode; no analytics).
+
+| Variable | What it does | How to get it |
+| --- | --- | --- |
+| `VITE_WEB3FORMS_KEY` | Delivers RFQ / inquiry / registration form submissions to your inbox by email (no backend needed). | Free access key from https://web3forms.com (enter your email, copy the key). |
+| `VITE_PLAUSIBLE_DOMAIN` | Enables privacy-friendly page analytics. Set to `anekakarya.run-web.tech`. | A Plausible account (plausible.io) with the domain added. |
+
+These are `VITE_`-prefixed, so they're read at **build time** — redeploy after changing.
 
 ## Add the real photos (one step)
 
