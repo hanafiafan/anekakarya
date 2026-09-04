@@ -1,23 +1,24 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Neutrals (charcoal-gray) */
-  --color-cream: #f4f5f7; /* page background (mist) */
+  /* Warm neutrals (cheerful, premium) */
+  --color-cream: #fbf6ee; /* warm page background */
   --color-paper: #ffffff; /* cards / alt background */
-  --color-ink: #22262d; /* headings, dark sections */
-  --color-muted: #6b7280; /* secondary text */
+  --color-ink: #241f1e; /* warm charcoal — headings, dark sections */
+  --color-muted: #7a6f6a; /* warm secondary text */
 
-  /* Brand red family (mapped onto legacy token names so the whole UI reskins) */
-  --color-forest: #c8322c; /* primary red — main buttons/brand */
-  --color-leaf: #9e241f; /* deep red — hover, links, tints */
-  --color-leaf-soft: #e7a6a1; /* light red */
-  --color-terra: #c8322c; /* accent red — badges */
+  /* Brand red family */
+  --color-forest: #d13a2e; /* primary red — brighter, cheerful */
+  --color-leaf: #ae2a22; /* deep red — hover, links */
+  --color-leaf-soft: #f0a89f; /* light red */
+  --color-terra: #e07a3a; /* warm amber-coral accent */
 
-  /* Secondary graphite (gradient partner, secondary badges) */
-  --color-ocean: #3f4650;
+  /* Cheerful secondary accents */
+  --color-sun: #f0a828; /* warm amber highlight */
+  --color-ocean: #3f4650; /* graphite (kept for dark contrast) */
   --color-ocean-soft: #b8bec7;
 
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
   --radius-xl2: 1.25rem;
@@ -57,9 +58,9 @@ h2,
 h3 {
   font-family: var(--font-display);
   font-optical-sizing: auto;
-  letter-spacing: -0.015em;
-  font-weight: 500;
-  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  line-height: 1.03;
 }
 
 /* Editorial display treatment for large headlines */

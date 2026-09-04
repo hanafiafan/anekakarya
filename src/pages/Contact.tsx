@@ -67,7 +67,7 @@ export default function Contact() {
               })}
             </div>
 
-            <div className="mt-6 rounded-2xl bg-gradient-to-br from-forest to-ocean p-6 text-white">
+            <div className="mt-6 rounded-2xl bg-gradient-to-br from-forest to-terra p-6 text-white">
               <h3 className="font-display text-lg">{t('contact.office')}</h3>
               <p className="mt-1 text-sm text-white/85">{t('rfq.trust')}</p>
               <button onClick={() => open()} className="btn btn-ondark mt-4">{t('nav.inquiry')}</button>

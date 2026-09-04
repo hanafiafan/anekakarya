@@ -123,6 +123,14 @@ export function Certifications() {
   )
 }
 
+/** Cheerful multicolor icon-tile palette (cycled by index). */
+export const iconTones = [
+  'bg-forest/10 text-forest ring-forest/15',
+  'bg-sun/20 text-[#b57816] ring-sun/25',
+  'bg-terra/15 text-terra ring-terra/25',
+  'bg-ocean/10 text-ocean ring-ocean/15',
+]
+
 /** Trade-assurance guarantees. */
 export function Guarantees() {
   const { t, tl } = useI18n()
@@ -136,7 +144,7 @@ export function Guarantees() {
           {guarantees.map((g, i) => (
             <Reveal key={i} delay={i * 80}>
               <div className="h-full rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_3px_rgba(31,42,36,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_46px_-22px_rgba(31,42,36,0.26)]">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-leaf/10 text-forest ring-1 ring-leaf/15">
+                <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ring-1 ${iconTones[i % iconTones.length]}`}>
                   <Icon name={g.icon} className="h-6 w-6" />
                 </div>
                 <h3 className="font-display text-lg text-ink">{tl(g.title)}</h3>

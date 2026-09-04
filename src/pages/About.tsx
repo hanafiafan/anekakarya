@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Img, Reveal, SectionHead } from '../components/ui'
 import { Icon } from '../components/icons'
+import { iconTones } from '../components/sections'
 import { guarantees, stats } from '../data'
 import { useI18n } from '../i18n'
 
@@ -98,7 +99,7 @@ export default function About() {
             {guarantees.map((g, i) => (
               <Reveal key={i} delay={i * 80}>
                 <div className="h-full rounded-3xl border border-black/[0.06] bg-white p-6 transition hover:-translate-y-1 hover:shadow-lg">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-leaf/10 text-forest">
+                  <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-2xl ring-1 ${iconTones[i % iconTones.length]}`}>
                     <Icon name={g.icon} className="h-6 w-6" />
                   </div>
                   <h3 className="font-display text-lg text-ink">{tl(g.title)}</h3>
@@ -143,7 +144,7 @@ export default function About() {
 
       {/* CTA */}
       <section className="container-x pb-8">
-        <div className="flex flex-col items-center justify-between gap-6 rounded-[2rem] bg-gradient-to-br from-forest to-ocean px-8 py-12 text-center text-white sm:flex-row sm:px-14 sm:text-left">
+        <div className="flex flex-col items-center justify-between gap-6 rounded-[2rem] bg-gradient-to-br from-forest to-terra px-8 py-12 text-center text-white sm:flex-row sm:px-14 sm:text-left">
           <div>
             <h2 className="font-display text-2xl sm:text-3xl">{t('cta.title')}</h2>
             <p className="mt-2 max-w-md text-white/85">{t('cta.sub')}</p>

@@ -105,7 +105,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="container-x pt-16">
-        <div className="overflow-hidden rounded-[2rem] bg-gradient-to-br from-forest to-ocean px-8 py-14 text-center text-white sm:px-16">
+        <div className="overflow-hidden rounded-[2rem] bg-gradient-to-br from-forest to-terra px-8 py-14 text-center text-white sm:px-16">
           <h2 className="mx-auto max-w-2xl font-display text-3xl sm:text-4xl">{t('cta.title')}</h2>
           <p className="mx-auto mt-3 max-w-xl text-white/85">{t('cta.sub')}</p>
           <button
