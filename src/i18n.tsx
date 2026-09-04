@@ -304,6 +304,10 @@ export const dict: Dict = {
   'ins.read': { en: 'Read article', id: 'Baca artikel' },
   'ins.min': { en: 'min read', id: 'menit baca' },
   'ins.more': { en: 'More articles', id: 'Artikel lainnya' },
+  'ins.endnote': {
+    en: 'Ready to source verified products from Boyolali? Browse the catalog and send a request for quote.',
+    id: 'Siap sourcing produk terverifikasi dari Boyolali? Telusuri katalog dan kirim permintaan penawaran.',
+  },
 
   // register umkm
   'reg.kicker': { en: 'For producers', id: 'Untuk produsen' },
