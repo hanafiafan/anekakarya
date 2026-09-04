@@ -118,8 +118,14 @@ export default function Inquiry() {
                 <textarea name="message" rows={3} className="w-full rounded-xl border border-black/10 bg-cream/50 px-3.5 py-2.5 text-sm outline-none transition focus:border-leaf focus:bg-white" />
               </label>
             </div>
-            <button type="submit" disabled={state === 'sending'} className="btn btn-primary mt-5 w-full disabled:opacity-60">
-              {state === 'sending' ? t('rfq.sending') : `${t('inq.submit')} (${rows.length})`}
+            <button type="submit" disabled={state === 'sending'} className="btn btn-primary mt-5 w-full disabled:opacity-70">
+              {state === 'sending' ? (
+                <>
+                  <span className="spinner" /> {t('rfq.sending')}
+                </>
+              ) : (
+                `${t('inq.submit')} (${rows.length})`
+              )}
             </button>
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[11px] text-muted">
               <Icon name="shield" className="h-3.5 w-3.5 text-leaf" />

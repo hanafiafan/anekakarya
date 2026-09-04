@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useI18n, type Lang } from '../i18n'
 import { useRfq } from './rfq'
 import { useInquiry } from './inquiry'
+import { Icon } from './icons'
 
 function Logo({ light = false }: { light?: boolean }) {
   const tile = light ? '#ffffff' : '#C8322C'
@@ -127,7 +128,7 @@ function Navbar() {
             onClick={() => setMenu((m) => !m)}
             aria-label="Menu"
           >
-            {menu ? '✕' : '☰'}
+            <Icon name={menu ? 'x' : 'menu'} className="h-6 w-6" />
           </button>
         </div>
       </div>
@@ -235,7 +236,9 @@ function InquiryToast() {
         to="/inquiry"
         className="flex items-center gap-3 rounded-full bg-ink px-5 py-3 text-sm font-medium text-white shadow-xl"
       >
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-leaf text-xs">✓</span>
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-leaf text-white">
+          <Icon name="check" className="h-4 w-4" />
+        </span>
         {t('inq.toast')}
         <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">{t('inq.view')} →</span>
       </Link>

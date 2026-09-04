@@ -115,8 +115,14 @@ function RfqModal({ product, onClose }: { product?: string; onClose: () => void 
               </label>
             </div>
 
-            <button type="submit" disabled={state === 'sending'} className="btn btn-primary mt-5 w-full disabled:opacity-60">
-              {state === 'sending' ? t('rfq.sending') : t('rfq.send')}
+            <button type="submit" disabled={state === 'sending'} className="btn btn-primary mt-5 w-full disabled:opacity-70">
+              {state === 'sending' ? (
+                <>
+                  <span className="spinner" /> {t('rfq.sending')}
+                </>
+              ) : (
+                t('rfq.send')
+              )}
             </button>
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[11px] text-muted">
               <Icon name="shield" className="h-3.5 w-3.5 text-leaf" />

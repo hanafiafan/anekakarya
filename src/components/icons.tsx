@@ -74,6 +74,7 @@ export function Icon({ name, className = 'h-6 w-6' }: { name: string; className?
       </>
     ),
     x: <path d="M6 6l12 12M18 6L6 18" />,
+    menu: <path d="M4 7h16M4 12h16M4 17h16" />,
     bag: <path d="M4 6h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 6zM9 6V4.5A2.5 2.5 0 0 1 11.5 2h1A2.5 2.5 0 0 1 15 4.5V6" />,
     trash: (
       <>
