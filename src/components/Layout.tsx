@@ -116,7 +116,7 @@ function Navbar() {
           </Link>
           <button
             onClick={() => open()}
-            className="hidden rounded-full bg-forest px-4 py-2 text-sm font-semibold text-white transition hover:bg-leaf sm:block"
+            className="hidden btn btn-primary btn-sm sm:inline-flex"
           >
             {t('nav.inquiry')}
           </button>
@@ -142,7 +142,7 @@ function Navbar() {
             <NavLink to="/register-umkm" className="text-sm font-medium text-ink">{t('nav.register')}</NavLink>
             <button
               onClick={() => open()}
-              className="mt-2 rounded-full bg-forest px-4 py-2.5 text-sm font-semibold text-white"
+              className="mt-2 btn btn-primary"
             >
               {t('nav.inquiry')}
             </button>

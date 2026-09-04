@@ -21,7 +21,7 @@ export default function Contact() {
             </div>
             <button
               onClick={() => open()}
-              className="mt-6 rounded-full bg-forest px-6 py-3 text-sm font-semibold text-white transition hover:bg-leaf"
+              className="mt-6 btn btn-primary"
             >
               {t('nav.inquiry')}
             </button>

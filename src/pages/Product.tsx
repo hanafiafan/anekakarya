@@ -142,10 +142,7 @@ export default function Product() {
                   +
                 </button>
               </div>
-              <button
-                onClick={() => open(tl(p.name))}
-                className="rounded-full bg-forest px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_-10px_rgba(200,50,44,0.7)] transition hover:bg-leaf"
-              >
+              <button onClick={() => open(tl(p.name))} className="btn btn-primary btn-lg">
                 {t('btn.rfq')}
               </button>
               <AddToInquiry slug={p.slug} qty={qty} />

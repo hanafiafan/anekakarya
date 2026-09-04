@@ -50,7 +50,7 @@ export default function Faq() {
           <p className="text-muted">{t('faq.cta')}</p>
           <button
             onClick={() => open()}
-            className="mt-4 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition hover:bg-leaf"
+            className="mt-4 btn btn-primary btn-lg"
           >
             {t('nav.inquiry')}
           </button>

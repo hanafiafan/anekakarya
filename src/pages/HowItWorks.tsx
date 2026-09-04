@@ -46,7 +46,7 @@ export default function HowItWorks() {
         <div className="mt-16 text-center">
           <button
             onClick={() => open()}
-            className="rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition hover:bg-leaf"
+            className="btn btn-primary btn-lg"
           >
             {t('nav.inquiry')}
           </button>

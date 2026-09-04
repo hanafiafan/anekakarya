@@ -121,7 +121,7 @@ export default function CinematicStory() {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   to="/catalog"
-                  className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-forest shadow-lg transition hover:bg-cream"
+                  className="btn btn-ondark"
                 >
                   {t('hero.cta1')}
                 </Link>
@@ -149,7 +149,7 @@ export default function CinematicStory() {
                   {last && (
                     <Link
                       to="/catalog"
-                      className="mt-7 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-forest shadow-lg transition hover:bg-cream"
+                      className="mt-7 inline-flex btn btn-ondark"
                     >
                       {t('hero.cta1')} →
                     </Link>

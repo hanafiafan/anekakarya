@@ -96,7 +96,7 @@ export default function Home() {
           </div>
           <Link
             to="/register-umkm"
-            className="shrink-0 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition hover:bg-leaf"
+            className="shrink-0 btn btn-primary btn-lg"
           >
             {t('nav.register')} →
           </Link>
@@ -110,7 +110,7 @@ export default function Home() {
           <p className="mx-auto mt-3 max-w-xl text-white/85">{t('cta.sub')}</p>
           <button
             onClick={() => open()}
-            className="mt-7 rounded-full bg-white px-7 py-3 text-sm font-semibold text-forest shadow-lg transition hover:bg-cream"
+            className="mt-7 btn btn-ondark btn-lg"
           >
             {t('nav.inquiry')}
           </button>
