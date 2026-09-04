@@ -12,6 +12,13 @@ const card =
   'shadow-[0_1px_3px_rgba(31,42,36,0.06)] transition duration-300 ease-out ' +
   'hover:-translate-y-1 hover:border-black/[0.08] hover:shadow-[0_24px_48px_-22px_rgba(31,42,36,0.28)]'
 
+const catAccent: Record<string, string> = {
+  dairy: 'bg-sun',
+  copper: 'bg-terra',
+  textile: 'bg-sky',
+  agri: 'bg-grass',
+}
+
 export function CategoryCard({ c }: { c: Category }) {
   const { tl } = useI18n()
   return (
@@ -19,6 +26,7 @@ export function CategoryCard({ c }: { c: Category }) {
       to={`/catalog/${c.slug}`}
       className="group relative block aspect-4/5 overflow-hidden rounded-2xl border border-black/[0.06] shadow-[0_1px_3px_rgba(31,42,36,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_-22px_rgba(31,42,36,0.3)]"
     >
+      <span className={`absolute inset-x-0 top-0 z-10 h-1.5 ${catAccent[c.slug] ?? 'bg-forest'}`} />
       <Img
         src={c.photo}
         alt={tl(c.name)}

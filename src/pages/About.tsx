@@ -78,7 +78,7 @@ export default function About() {
         <div className="container-x grid grid-cols-2 gap-6 py-14 sm:grid-cols-4">
           {stats.map((s) => (
             <div key={s.value} className="text-center">
-              <div className="font-display text-4xl sm:text-5xl">{s.value}</div>
+              <div className="font-display text-4xl text-sun sm:text-5xl">{s.value}</div>
               <div className="mt-1 text-sm text-white/70">{tl(s.label)}</div>
             </div>
           ))}

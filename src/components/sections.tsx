@@ -127,8 +127,8 @@ export function Certifications() {
 export const iconTones = [
   'bg-forest/10 text-forest ring-forest/15',
   'bg-sun/20 text-[#b57816] ring-sun/25',
-  'bg-terra/15 text-terra ring-terra/25',
-  'bg-ocean/10 text-ocean ring-ocean/15',
+  'bg-sky/12 text-sky ring-sky/20',
+  'bg-grass/12 text-grass ring-grass/20',
 ]
 
 /** Trade-assurance guarantees. */
