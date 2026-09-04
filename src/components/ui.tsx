@@ -23,6 +23,7 @@ export function Img({
   label?: string
 }) {
   const [failed, setFailed] = useState(false)
+  const [loaded, setLoaded] = useState(false)
   if (failed) {
     return (
       <div
@@ -40,7 +41,8 @@ export function Img({
       alt={alt}
       loading="lazy"
       onError={() => setFailed(true)}
-      className={className}
+      onLoad={() => setLoaded(true)}
+      className={`${className} transition-opacity duration-700 ease-out ${loaded ? 'opacity-100' : 'opacity-0'}`}
     />
   )
 }

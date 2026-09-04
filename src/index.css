@@ -139,6 +139,36 @@ h3 {
 .btn-ghost:hover {
   background: color-mix(in srgb, var(--color-forest) 8%, transparent);
 }
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Accessible focus rings */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-forest) 55%, transparent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Page transition on route change */
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-fade {
+  animation: pageFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 /* utility helpers */
 .font-display {

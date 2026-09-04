@@ -81,15 +81,17 @@ function Navbar() {
             <NavLink
               key={l.to}
               to={l.to}
-              className={({ isActive }) =>
-                `text-sm font-medium transition ${
-                  solid
-                    ? isActive
-                      ? 'text-forest'
-                      : 'text-ink/70 hover:text-forest'
-                    : 'text-white/85 hover:text-white'
-                }`
-              }
+              className={({ isActive }) => {
+                const base =
+                  'relative pb-1 text-sm font-medium transition after:absolute after:bottom-0 after:left-0 after:h-0.5 after:rounded-full after:transition-all after:duration-300 hover:after:w-full'
+                const color = solid
+                  ? isActive
+                    ? 'text-forest'
+                    : 'text-ink/70 hover:text-forest'
+                  : 'text-white/85 hover:text-white'
+                const underline = `${solid ? 'after:bg-forest' : 'after:bg-white'} ${isActive ? 'after:w-full' : 'after:w-0'}`
+                return `${base} ${color} ${underline}`
+              }}
             >
               {l.label}
             </NavLink>
@@ -213,7 +215,7 @@ function ScrollProgress() {
   return (
     <div className="fixed inset-x-0 top-0 z-50 h-0.5 bg-transparent">
       <div
-        className="h-full bg-gradient-to-r from-forest via-leaf to-ocean transition-[width] duration-150"
+        className="h-full bg-gradient-to-r from-forest via-terra to-sun transition-[width] duration-150"
         style={{ width: `${w}%` }}
       />
     </div>
@@ -241,6 +243,29 @@ function InquiryToast() {
   )
 }
 
+function BackToTop() {
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    const on = () => setShow(window.scrollY > 700)
+    on()
+    window.addEventListener('scroll', on, { passive: true })
+    return () => window.removeEventListener('scroll', on)
+  }, [])
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Back to top"
+      className={`fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-forest text-white shadow-[0_10px_26px_-10px_rgba(200,50,44,0.7)] transition-all duration-300 hover:bg-leaf ${
+        show ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
+      }`}
+    >
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+  )
+}
+
 export default function Layout() {
   const loc = useLocation()
   useEffect(() => {
@@ -251,10 +276,13 @@ export default function Layout() {
       <ScrollProgress />
       <Navbar />
       <main className="flex-1">
-        <Outlet />
+        <div key={loc.pathname} className="page-fade">
+          <Outlet />
+        </div>
       </main>
       <Footer />
       <InquiryToast />
+      <BackToTop />
     </div>
   )
 }
