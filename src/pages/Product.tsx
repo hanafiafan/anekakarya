@@ -7,6 +7,7 @@ import { Icon, VerifiedCheck } from '../components/icons'
 import { useRfq } from '../components/rfq'
 import { byCategory, categoryBySlug, productBySlug, umkmBySlug } from '../data'
 import { useI18n } from '../i18n'
+import { SITE, useSeo } from '../lib/seo'
 
 export default function Product() {
   const { slug = '' } = useParams()
@@ -15,6 +16,26 @@ export default function Product() {
   const p = productBySlug(slug)
   const [active, setActive] = useState(0)
   const [qty, setQty] = useState(1)
+
+  useSeo(
+    p
+      ? {
+          title: tl(p.name),
+          description: tl(p.description),
+          image: p.photo,
+          path: `/product/${slug}`,
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: tl(p.name),
+            image: `${SITE}${p.photo}`,
+            description: tl(p.description),
+            sku: p.slug,
+            brand: { '@type': 'Brand', name: 'Aneka Karya' },
+          },
+        }
+      : { title: 'Not found', path: `/product/${slug}` },
+  )
 
   if (!p)
     return (

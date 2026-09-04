@@ -5,12 +5,14 @@ import { Icon } from '../components/icons'
 import { SectionHead } from '../components/ui'
 import { categories, certifications, products, umkmBySlug, umkms } from '../data'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
 
 const moqNum = (s: string) => parseInt(s.replace(/[^0-9]/g, '') || '0', 10)
 
 export default function Catalog() {
   const { t, tl, lang } = useI18n()
   const [params, setParams] = useSearchParams()
+  useSeo({ title: t('catalog.title'), description: t('catalog.sub'), path: '/catalog' })
 
   const q = params.get('q') ?? ''
   const cat = params.get('cat') ?? 'all'

@@ -2,10 +2,12 @@ import { Reveal, SectionHead } from '../components/ui'
 import { Icon } from '../components/icons'
 import { useRfq } from '../components/rfq'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
 
 export default function HowItWorks() {
   const { t } = useI18n()
   const { open } = useRfq()
+  useSeo({ title: t('nav.how'), description: t('how.title'), path: '/how-it-works' })
   const steps = [1, 2, 3, 4]
   const icons = ['search', 'box', 'factory', 'ship']
 

@@ -2,11 +2,34 @@ import { Link, useParams } from 'react-router-dom'
 import { Img } from '../components/ui'
 import { articleBySlug, articles } from '../data'
 import { useI18n } from '../i18n'
+import { SITE, useSeo } from '../lib/seo'
 
 export default function Article() {
   const { slug = '' } = useParams()
   const { t, tl, lang } = useI18n()
   const a = articleBySlug(slug)
+
+  useSeo(
+    a
+      ? {
+          title: tl(a.title),
+          description: tl(a.excerpt),
+          image: a.photo,
+          path: `/insights/${slug}`,
+          type: 'article',
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: tl(a.title),
+            image: `${SITE}${a.photo}`,
+            datePublished: a.date,
+            description: tl(a.excerpt),
+            author: { '@type': 'Organization', name: 'Aneka Karya' },
+            publisher: { '@type': 'Organization', name: 'Aneka Karya' },
+          },
+        }
+      : { title: 'Not found', path: `/insights/${slug}` },
+  )
 
   if (!a)
     return (

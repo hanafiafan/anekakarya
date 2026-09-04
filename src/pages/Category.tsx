@@ -3,11 +3,19 @@ import { ProductCard, UmkmCard } from '../components/cards'
 import { Img } from '../components/ui'
 import { byCategory, categoryBySlug, umkmsByCategory } from '../data'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
 
 export default function Category() {
   const { slug = '' } = useParams()
   const { t, tl } = useI18n()
   const c = categoryBySlug(slug)
+
+  useSeo({
+    title: c ? tl(c.name) : 'Category',
+    description: c ? tl(c.tagline) : undefined,
+    image: c?.photo,
+    path: `/catalog/${slug}`,
+  })
 
   if (!c) return <NotFoundish />
 

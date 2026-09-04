@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { useI18n } from '../i18n'
 import { Icon } from './icons'
+import { submitForm } from '../lib/submitForm'
 
 type RfqCtx = { open: (product?: string) => void }
 const Ctx = createContext<RfqCtx | null>(null)
@@ -29,6 +30,7 @@ export function RfqProvider({ children }: { children: ReactNode }) {
 function RfqModal({ product, onClose }: { product?: string; onClose: () => void }) {
   const { t } = useI18n()
   const [state, setState] = useState<'form' | 'sending' | 'done'>('form')
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -42,13 +44,17 @@ function RfqModal({ product, onClose }: { product?: string; onClose: () => void 
     }
   }, [onClose])
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError('')
     setState('sending')
-    // ponytail: no backend/email key wired yet — simulate accept + log payload.
-    const data = Object.fromEntries(new FormData(e.target as HTMLFormElement))
-    console.info('[RFQ submitted]', data)
-    setTimeout(() => setState('done'), 700)
+    const data = Object.fromEntries(new FormData(e.currentTarget as HTMLFormElement))
+    const { ok } = await submitForm('New RFQ — Aneka Karya', data)
+    if (ok) setState('done')
+    else {
+      setState('form')
+      setError(t('form.error'))
+    }
   }
 
   return (
@@ -124,6 +130,7 @@ function RfqModal({ product, onClose }: { product?: string; onClose: () => void 
                 t('rfq.send')
               )}
             </button>
+            {error && <p className="mt-3 text-center text-xs font-medium text-forest">{error}</p>}
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[11px] text-muted">
               <Icon name="shield" className="h-3.5 w-3.5 text-leaf" />
               {t('rfq.trust')}

@@ -229,6 +229,10 @@ export const dict: Dict = {
   'news.btn': { en: 'Subscribe', id: 'Berlangganan' },
   'news.done': { en: 'Subscribed — thank you.', id: 'Berhasil berlangganan — terima kasih.' },
 
+  'form.error': {
+    en: 'Couldn’t send — please try again, or email export@anekakarya.id.',
+    id: 'Gagal mengirim — coba lagi, atau email export@anekakarya.id.',
+  },
   'rfq.trust': {
     en: 'Response within 2 business days · No account required · Free to inquire',
     id: 'Respons dalam 2 hari kerja · Tanpa akun · Gratis bertanya',

@@ -3,11 +3,27 @@ import { SectionHead } from '../components/ui'
 import { useRfq } from '../components/rfq'
 import { faqs } from '../data'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
 
 export default function Faq() {
   const { t, tl } = useI18n()
   const { open } = useRfq()
   const [openIdx, setOpenIdx] = useState<number | null>(0)
+
+  useSeo({
+    title: t('faq.title'),
+    description: t('faq.sub'),
+    path: '/faq',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: tl(f.q),
+        acceptedAnswer: { '@type': 'Answer', text: tl(f.a) },
+      })),
+    },
+  })
 
   return (
     <div className="pt-28">

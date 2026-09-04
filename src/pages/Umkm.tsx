@@ -5,12 +5,33 @@ import { Icon, VerifiedCheck } from '../components/icons'
 import { useRfq } from '../components/rfq'
 import { productBySlug, umkmBySlug } from '../data'
 import { useI18n } from '../i18n'
+import { SITE, useSeo } from '../lib/seo'
 
 export default function Umkm() {
   const { slug = '' } = useParams()
   const { t, tl } = useI18n()
   const { open } = useRfq()
   const u = umkmBySlug(slug)
+
+  useSeo(
+    u
+      ? {
+          title: u.name,
+          description: tl(u.story),
+          image: u.photo,
+          path: `/umkm/${slug}`,
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: u.name,
+            image: `${SITE}${u.photo}`,
+            description: tl(u.story),
+            address: { '@type': 'PostalAddress', addressLocality: tl(u.location), addressCountry: 'ID' },
+            foundingDate: String(u.since),
+          },
+        }
+      : { title: 'Not found', path: `/umkm/${slug}` },
+  )
 
   if (!u)
     return (

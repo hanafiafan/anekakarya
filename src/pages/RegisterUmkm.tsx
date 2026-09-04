@@ -3,18 +3,27 @@ import { Link } from 'react-router-dom'
 import { Icon } from '../components/icons'
 import { categories } from '../data'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
+import { submitForm } from '../lib/submitForm'
 
 export default function RegisterUmkm() {
   const { t, tl } = useI18n()
+  useSeo({ title: t('reg.title'), description: t('reg.sub'), path: '/register-umkm' })
   const [step, setStep] = useState(1)
   const [done, setDone] = useState(false)
+  const [error, setError] = useState('')
+  const [sending, setSending] = useState(false)
   const total = 3
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError('')
+    setSending(true)
     const data = Object.fromEntries(new FormData(e.currentTarget as HTMLFormElement))
-    console.info('[UMKM registration]', data)
-    setDone(true)
+    const { ok } = await submitForm('New UMKM registration — Aneka Karya', data)
+    setSending(false)
+    if (ok) setDone(true)
+    else setError(t('form.error'))
   }
 
   if (done)
@@ -140,9 +149,18 @@ export default function RegisterUmkm() {
                   {t('reg.next')} →
                 </button>
               ) : (
-                <button type="submit" className="btn btn-primary">{t('reg.submit')}</button>
+                <button type="submit" disabled={sending} className="btn btn-primary disabled:opacity-70">
+                  {sending ? (
+                    <>
+                      <span className="spinner" /> {t('rfq.sending')}
+                    </>
+                  ) : (
+                    t('reg.submit')
+                  )}
+                </button>
               )}
             </div>
+            {error && <p className="mt-4 text-center text-xs font-medium text-forest">{error}</p>}
           </form>
         </div>
       </div>

@@ -15,10 +15,31 @@ import {
 import { useRfq } from '../components/rfq'
 import { categories, stats, umkms } from '../data'
 import { useI18n } from '../i18n'
+import { SITE, useSeo } from '../lib/seo'
 
 export default function Home() {
   const { t, tl } = useI18n()
   const { open } = useRfq()
+
+  useSeo({
+    title: 'Aneka Karya — Boyolali to the World',
+    path: '/',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Aneka Karya',
+      url: SITE,
+      logo: `${SITE}/logo-mark.svg`,
+      description: 'Export platform connecting Boyolali’s UMKM producers with global buyers.',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Boyolali',
+        addressRegion: 'Central Java',
+        addressCountry: 'ID',
+      },
+      email: 'export@anekakarya.id',
+    },
+  })
 
   return (
     <>

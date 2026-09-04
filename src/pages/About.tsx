@@ -4,9 +4,11 @@ import { Icon } from '../components/icons'
 import { iconTones } from '../components/sections'
 import { guarantees, stats } from '../data'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
 
 export default function About() {
   const { t, tl } = useI18n()
+  useSeo({ title: t('nav.about'), description: t('about.lead'), image: '/photos/highlands-b.jpg', path: '/about' })
   return (
     <div>
       {/* hero */}

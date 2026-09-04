@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { Img, Reveal, SectionHead } from '../components/ui'
 import { articles } from '../data'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
 
 export default function Insights() {
   const { t, tl } = useI18n()
+  useSeo({ title: t('ins.title'), description: t('ins.sub'), path: '/insights' })
   const [tag, setTag] = useState<string>('all')
 
   const tags = Array.from(new Set(articles.map((a) => a.tag.en)))

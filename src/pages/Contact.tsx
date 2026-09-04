@@ -2,10 +2,12 @@ import { SectionHead } from '../components/ui'
 import { Icon } from '../components/icons'
 import { useRfq } from '../components/rfq'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
 
 export default function Contact() {
   const { t, tl } = useI18n()
   const { open } = useRfq()
+  useSeo({ title: t('nav.contact'), description: t('contact.sub'), path: '/contact' })
 
   const methods = [
     {

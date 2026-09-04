@@ -5,24 +5,33 @@ import { Icon } from '../components/icons'
 import { useInquiry } from '../components/inquiry'
 import { productBySlug, umkmBySlug } from '../data'
 import { useI18n } from '../i18n'
+import { useSeo } from '../lib/seo'
+import { submitForm } from '../lib/submitForm'
 
 export default function Inquiry() {
   const { t, tl } = useI18n()
+  useSeo({ title: t('inq.title'), description: t('inq.sub'), path: '/inquiry' })
   const { items, setQty, remove, clear } = useInquiry()
   const [state, setState] = useState<'form' | 'sending' | 'done'>('form')
+  const [error, setError] = useState('')
 
   const rows = items.map((i) => ({ item: i, product: productBySlug(i.slug) })).filter((r) => r.product)
   const producers = new Set(rows.map((r) => r.product!.umkm)).size
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError('')
     setState('sending')
-    const buyer = Object.fromEntries(new FormData(e.target as HTMLFormElement))
-    console.info('[Consolidated RFQ]', { buyer, items })
-    setTimeout(() => {
+    const buyer = Object.fromEntries(new FormData(e.currentTarget as HTMLFormElement))
+    const itemsText = rows.map((r) => `${tl(r.product!.name)} ×${r.item.qty}`).join('; ')
+    const { ok } = await submitForm('New consolidated inquiry — Aneka Karya', { ...buyer, items: itemsText })
+    if (ok) {
       setState('done')
       clear()
-    }, 800)
+    } else {
+      setState('form')
+      setError(t('form.error'))
+    }
   }
 
   if (state === 'done')
@@ -127,6 +136,7 @@ export default function Inquiry() {
                 `${t('inq.submit')} (${rows.length})`
               )}
             </button>
+            {error && <p className="mt-3 text-center text-xs font-medium text-forest">{error}</p>}
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[11px] text-muted">
               <Icon name="shield" className="h-3.5 w-3.5 text-leaf" />
               {t('rfq.trust')}
