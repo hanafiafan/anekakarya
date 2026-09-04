@@ -73,6 +73,25 @@ export function Icon({ name, className = 'h-6 w-6' }: { name: string; className?
         <path d="M12 7.5V12l3 2" />
       </>
     ),
+    x: <path d="M6 6l12 12M18 6L6 18" />,
+    bag: <path d="M4 6h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 6zM9 6V4.5A2.5 2.5 0 0 1 11.5 2h1A2.5 2.5 0 0 1 15 4.5V6" />,
+    trash: (
+      <>
+        <path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
+        <path d="M6 7l1 12a2 2 0 0 0 2 1.8h6a2 2 0 0 0 2-1.8L18 7" />
+      </>
+    ),
+    plus: <path d="M12 5v14M5 12h14" />,
+    minus: <path d="M5 12h14" />,
+    mail: (
+      <>
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="M4 7.5l8 5.5 8-5.5" />
+      </>
+    ),
+    phone: (
+      <path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5v3c0 1-.8 1.8-1.8 1.7C11.7 22 2 12.3 1.8 4.3 1.8 3.3 2.5 2.5 3.5 2.5" />
+    ),
   }
   return (
     <svg
