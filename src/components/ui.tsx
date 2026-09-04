@@ -24,6 +24,13 @@ export function Img({
 }) {
   const [failed, setFailed] = useState(false)
   const [loaded, setLoaded] = useState(false)
+  const imgRef = useRef<HTMLImageElement | null>(null)
+
+  // Cached images may already be complete before onLoad attaches.
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) setLoaded(true)
+  }, [src])
+
   if (failed) {
     return (
       <div
@@ -36,14 +43,18 @@ export function Img({
     )
   }
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      onError={() => setFailed(true)}
-      onLoad={() => setLoaded(true)}
-      className={`${className} transition-opacity duration-700 ease-out ${loaded ? 'opacity-100' : 'opacity-0'}`}
-    />
+    <span className={`relative block overflow-hidden ${className}`}>
+      {!loaded && <span className="skeleton absolute inset-0" aria-hidden />}
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onError={() => setFailed(true)}
+        onLoad={() => setLoaded(true)}
+        className={`h-full w-full object-cover transition-opacity duration-700 ease-out ${loaded ? 'opacity-100' : 'opacity-0'}`}
+      />
+    </span>
   )
 }
 

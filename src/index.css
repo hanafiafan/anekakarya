@@ -170,6 +170,30 @@ textarea:focus-visible,
   animation: pageFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Image skeleton shimmer */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.skeleton {
+  background: #ece6db;
+  overflow: hidden;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
 /* utility helpers */
 .font-display {
   font-family: var(--font-display);
